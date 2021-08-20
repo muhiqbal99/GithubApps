@@ -1,0 +1,94 @@
+[
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/layout_favorite_fragment.xml.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/layout/favorite_fragment.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/menu_main_menu.xml.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/menu/main_menu.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/drawable_ic_location.xml.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/drawable/ic_location.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/drawable_ic_search.xml.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/drawable/ic_search.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/layout_activity_spash.xml.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/layout/activity_spash.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/font_poppins.ttf.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/font/poppins.ttf"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/layout_activity_main.xml.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/layout_activity_error.xml.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/layout/activity_error.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/drawable_logo_rounded.png.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/drawable/logo_rounded.png"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/layout_user_items.xml.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/layout/user_items.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/layout_activity_detail_user.xml.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/layout/activity_detail_user.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/layout_fragment_follow.xml.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/layout/fragment_follow.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/drawable_ic_company.xml.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/drawable/ic_company.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/drawable_ic_favorite_red.xml.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/drawable/ic_favorite_red.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/font_open_sans.ttf.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/font/open_sans.ttf"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/merged_res/debug/drawable_ic_favorite.xml.flat",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/drawable/ic_favorite.xml"
+    }
+]

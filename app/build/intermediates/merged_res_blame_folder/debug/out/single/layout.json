@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_follow.xml",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/layout/fragment_follow.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_detail_user.xml",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/layout/activity_detail_user.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/favorite_fragment.xml",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/layout/favorite_fragment.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_spash.xml",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/layout/activity_spash.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_error.xml",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/layout/activity_error.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/iqbal/AndroidStudioProjects/GithubApps/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/user_items.xml",
+        "source": "/home/iqbal/AndroidStudioProjects/GithubApps/app/src/main/res/layout/user_items.xml"
+    }
+]
