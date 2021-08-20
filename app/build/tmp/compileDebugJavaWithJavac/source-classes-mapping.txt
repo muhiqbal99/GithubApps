@@ -25,3 +25,4 @@ com/example/submission2bfaa/data/local/FavoriteDao_Impl.java
  com.example.submission2bfaa.data.local.FavoriteDao_Impl$4
  com.example.submission2bfaa.data.local.FavoriteDao_Impl$5
  com.example.submission2bfaa.data.local.FavoriteDao_Impl$6
+ com.example.submission2bfaa.data.local.FavoriteDao_Impl$7

@@ -1,19 +1,15 @@
 package com.example.submission2bfaa.ui.activity
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.submission2bfaa.R
-import com.example.submission2bfaa.data.local.FavoriteDatabase
 import com.example.submission2bfaa.databinding.ActivityDetailUserBinding
 import com.example.submission2bfaa.model.User
-import com.example.submission2bfaa.repository.FavoriteRepositories
 import com.example.submission2bfaa.ui.adapter.SectionPageAdapter
-import com.example.submission2bfaa.utils.ViewModelFactory
 import com.example.submission2bfaa.viewmodel.DetailViewModel
 
 class DetailActivity : AppCompatActivity() {
@@ -25,28 +21,25 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailUserBinding
     private lateinit var viewModel: DetailViewModel
-    private lateinit var user: User
-    private var isFavorite: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         val detailUser = intent.getParcelableExtra<User>(EXTRA_DATA)
 
-        binding.fab.setOnClickListener{ addOrRemoveFavorite() }
+//        binding.fab.setOnClickListener { addOrRemoveFavorite() }
         showUser(detailUser)
     }
 
     private fun showUser(detailUser: User?) {
 
-        val database = FavoriteDatabase(this)
-        val repository = FavoriteRepositories(database)
-        val factory = ViewModelFactory(repository)
+//        val database = FavoriteDatabase.invoke(this)
+//        val repository = FavoriteRepositories(database)
+//        val factory = ViewModelFactory(repository)
 
         viewModel = ViewModelProvider(
-            this, factory
+            this
         ).get(DetailViewModel::class.java)
 
         viewModel.setUserDetail(detailUser!!.login)
@@ -72,10 +65,13 @@ class DetailActivity : AppCompatActivity() {
             }
         })
 
-        viewModel.isFavorite.observe(this, {
-            isFavorite = it
-            changeFavorite(it)
-        })
+        var statusFavorite = detailUser.isFavorite
+        setStatusFavorite(statusFavorite)
+        binding.fab.setOnClickListener {
+            statusFavorite = !statusFavorite
+            viewModel.setFavorite(detailUser, statusFavorite)
+            setStatusFavorite(statusFavorite)
+        }
 
         val bundle = Bundle()
         bundle.putString(EXTRA_USERNAME, detailUser.login)
@@ -89,21 +85,21 @@ class DetailActivity : AppCompatActivity() {
         setActionBarTitle(detailUser.login)
     }
 
-    private fun addOrRemoveFavorite() {
-        if (!isFavorite) {
-            viewModel.addFavorite(user)
-            Log.d(TAG, "addOrRemoveFavorite: Added")
+    private fun setStatusFavorite(statusFavorite: Boolean) {
+        if (statusFavorite) {
+            binding.fab.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.ic_favorite
+                )
+            )
         } else {
-            viewModel.removeFavorite(user)
-            Log.d(TAG, "addOrRemoveFavorite: Deleted")
-        }
-    }
-
-    private fun changeFavorite(condition: Boolean) {
-        if (condition) {
-            binding.fab.setImageResource(R.drawable.ic_favorite)
-        } else {
-            binding.fab.setImageResource(R.drawable.ic_favorite_red)
+            binding.fab.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.ic_favorite_red
+                )
+            )
         }
     }
 

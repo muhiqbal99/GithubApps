@@ -1,18 +1,30 @@
 package com.example.submission2bfaa.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.submission2bfaa.data.local.FavoriteDao
+import com.example.submission2bfaa.data.local.FavoriteDatabase
 import com.example.submission2bfaa.data.remote.RetrofitInstance
 import com.example.submission2bfaa.model.User
 import com.example.submission2bfaa.repository.FavoriteRepositories
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
-class DetailViewModel(private val favoriteRepositories: FavoriteRepositories) : ViewModel() {
+class DetailViewModel(application: Application) : AndroidViewModel(application) {
 
-    val detail = MutableLiveData<User>()
+    private val favoriteDao: FavoriteDao = FavoriteDatabase.invoke(application).favoriteDao()
+    private val favoriteRepositories: FavoriteRepositories
+
+    init {
+        favoriteRepositories = FavoriteRepositories(favoriteDao)
+    }
+
+    private val detail = MutableLiveData<User>()
+
 
     fun setUserDetail(username: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -25,13 +37,7 @@ class DetailViewModel(private val favoriteRepositories: FavoriteRepositories) : 
         return detail
     }
 
-    fun addFavorite(user: User) = viewModelScope.launch {
-        favoriteRepositories.insert(user)
+     fun setFavorite(user: User, newStatus: Boolean) = viewModelScope.launch {
+        favoriteRepositories.setFavorite(user, newStatus)
     }
-
-    fun removeFavorite(user: User) = viewModelScope.launch {
-        favoriteRepositories.delete(user)
-    }
-
-    val isFavorite: LiveData<Boolean> = favoriteRepositories.isFavorite
 }

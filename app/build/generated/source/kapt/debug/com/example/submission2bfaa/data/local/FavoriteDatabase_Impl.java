@@ -33,9 +33,9 @@ public final class FavoriteDatabase_Impl extends FavoriteDatabase {
     final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `tb_user_favorite` (`id` INTEGER NOT NULL, `login` TEXT NOT NULL, `avatar_url` TEXT NOT NULL, `name` TEXT, `location` TEXT, `company` TEXT, `public_repos` INTEGER NOT NULL, `followers` INTEGER NOT NULL, `following` INTEGER NOT NULL, PRIMARY KEY(`id`))");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `tb_user_favorite` (`id` INTEGER NOT NULL, `login` TEXT NOT NULL, `avatar_url` TEXT NOT NULL, `name` TEXT, `location` TEXT, `company` TEXT, `public_repos` INTEGER NOT NULL, `followers` INTEGER NOT NULL, `following` INTEGER NOT NULL, `isFavorite` INTEGER NOT NULL, PRIMARY KEY(`id`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'eb0713fec95c5881dd0c170bce62e9e2')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '68f24a5a31f5daf7f337ee8ea5c00f47')");
       }
 
       @Override
@@ -79,7 +79,7 @@ public final class FavoriteDatabase_Impl extends FavoriteDatabase {
 
       @Override
       protected RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsTbUserFavorite = new HashMap<String, TableInfo.Column>(9);
+        final HashMap<String, TableInfo.Column> _columnsTbUserFavorite = new HashMap<String, TableInfo.Column>(10);
         _columnsTbUserFavorite.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsTbUserFavorite.put("login", new TableInfo.Column("login", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsTbUserFavorite.put("avatar_url", new TableInfo.Column("avatar_url", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -89,6 +89,7 @@ public final class FavoriteDatabase_Impl extends FavoriteDatabase {
         _columnsTbUserFavorite.put("public_repos", new TableInfo.Column("public_repos", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsTbUserFavorite.put("followers", new TableInfo.Column("followers", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsTbUserFavorite.put("following", new TableInfo.Column("following", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsTbUserFavorite.put("isFavorite", new TableInfo.Column("isFavorite", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysTbUserFavorite = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesTbUserFavorite = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoTbUserFavorite = new TableInfo("tb_user_favorite", _columnsTbUserFavorite, _foreignKeysTbUserFavorite, _indicesTbUserFavorite);
@@ -100,7 +101,7 @@ public final class FavoriteDatabase_Impl extends FavoriteDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "eb0713fec95c5881dd0c170bce62e9e2", "09a24f34b6d93b75026dd7de55f8ab92");
+    }, "68f24a5a31f5daf7f337ee8ea5c00f47", "88e7992305b86bbe1031e2ae5ba8b91f");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)

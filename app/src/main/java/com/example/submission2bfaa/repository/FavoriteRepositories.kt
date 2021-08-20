@@ -1,22 +1,21 @@
 package com.example.submission2bfaa.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.example.submission2bfaa.data.local.FavoriteDatabase
+import com.example.submission2bfaa.data.local.FavoriteDao
 import com.example.submission2bfaa.model.User
 
-class FavoriteRepositories(private val db: FavoriteDatabase) {
+class FavoriteRepositories(private val favoriteDao: FavoriteDao) {
 
-    private val favorite: MutableLiveData<Boolean> = MutableLiveData()
-
-    suspend fun insert(user: User){
-        db.favoriteDao().insertFavorite(user)
-        favorite.value = true
+    suspend fun insert(user: User) {
+        favoriteDao.insertFavorite(user)
     }
 
-    suspend fun delete(user: User){
-        db.favoriteDao().deleteFavorite(user)
-        favorite.value = false
+    suspend fun delete(user: User) {
+        favoriteDao.deleteFavorite(user)
     }
-    val isFavorite: LiveData<Boolean> = favorite
+
+    suspend fun setFavorite(user: User, newState: Boolean)  {
+        user.isFavorite = newState
+        favoriteDao.updateFavorite(user)
+    }
+
 }

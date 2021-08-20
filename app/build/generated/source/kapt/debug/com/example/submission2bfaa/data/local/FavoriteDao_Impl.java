@@ -40,7 +40,7 @@ public final class FavoriteDao_Impl implements FavoriteDao {
     this.__insertionAdapterOfUser = new EntityInsertionAdapter<User>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR REPLACE INTO `tb_user_favorite` (`id`,`login`,`avatar_url`,`name`,`location`,`company`,`public_repos`,`followers`,`following`) VALUES (?,?,?,?,?,?,?,?,?)";
+        return "INSERT OR IGNORE INTO `tb_user_favorite` (`id`,`login`,`avatar_url`,`name`,`location`,`company`,`public_repos`,`followers`,`following`,`isFavorite`) VALUES (?,?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -74,6 +74,9 @@ public final class FavoriteDao_Impl implements FavoriteDao {
         stmt.bindLong(7, value.getPublic_repos());
         stmt.bindLong(8, value.getFollowers());
         stmt.bindLong(9, value.getFollowing());
+        final int _tmp;
+        _tmp = value.isFavorite() ? 1 : 0;
+        stmt.bindLong(10, _tmp);
       }
     };
     this.__deletionAdapterOfUser = new EntityDeletionOrUpdateAdapter<User>(__db) {
@@ -90,7 +93,7 @@ public final class FavoriteDao_Impl implements FavoriteDao {
     this.__updateAdapterOfUser = new EntityDeletionOrUpdateAdapter<User>(__db) {
       @Override
       public String createQuery() {
-        return "UPDATE OR ABORT `tb_user_favorite` SET `id` = ?,`login` = ?,`avatar_url` = ?,`name` = ?,`location` = ?,`company` = ?,`public_repos` = ?,`followers` = ?,`following` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `tb_user_favorite` SET `id` = ?,`login` = ?,`avatar_url` = ?,`name` = ?,`location` = ?,`company` = ?,`public_repos` = ?,`followers` = ?,`following` = ?,`isFavorite` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -124,30 +127,33 @@ public final class FavoriteDao_Impl implements FavoriteDao {
         stmt.bindLong(7, value.getPublic_repos());
         stmt.bindLong(8, value.getFollowers());
         stmt.bindLong(9, value.getFollowing());
-        stmt.bindLong(10, value.getId());
+        final int _tmp;
+        _tmp = value.isFavorite() ? 1 : 0;
+        stmt.bindLong(10, _tmp);
+        stmt.bindLong(11, value.getId());
       }
     };
   }
 
   @Override
-  public Object insertFavorite(final User favorite, final Continuation<? super Unit> arg1) {
+  public Object insertFavorite(final User user, final Continuation<? super Unit> continuation) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       public Unit call() throws Exception {
         __db.beginTransaction();
         try {
-          __insertionAdapterOfUser.insert(favorite);
+          __insertionAdapterOfUser.insert(user);
           __db.setTransactionSuccessful();
           return Unit.INSTANCE;
         } finally {
           __db.endTransaction();
         }
       }
-    }, arg1);
+    }, continuation);
   }
 
   @Override
-  public Object deleteFavorite(final User model, final Continuation<? super Integer> arg1) {
+  public Object deleteFavorite(final User model, final Continuation<? super Integer> continuation) {
     return CoroutinesRoom.execute(__db, true, new Callable<Integer>() {
       @Override
       public Integer call() throws Exception {
@@ -161,18 +167,101 @@ public final class FavoriteDao_Impl implements FavoriteDao {
           __db.endTransaction();
         }
       }
-    }, arg1);
+    }, continuation);
   }
 
   @Override
-  public void updateFavorite(final User favorite) {
+  public Object updateFavorite(final User user, final Continuation<? super Unit> continuation) {
+    return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
+      @Override
+      public Unit call() throws Exception {
+        __db.beginTransaction();
+        try {
+          __updateAdapterOfUser.handle(user);
+          __db.setTransactionSuccessful();
+          return Unit.INSTANCE;
+        } finally {
+          __db.endTransaction();
+        }
+      }
+    }, continuation);
+  }
+
+  @Override
+  public User getUserDetail(final String username) {
+    final String _sql = "SELECT * from tb_user_favorite WHERE login = ?";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    if (username == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, username);
+    }
     __db.assertNotSuspendingTransaction();
-    __db.beginTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
     try {
-      __updateAdapterOfUser.handle(favorite);
-      __db.setTransactionSuccessful();
+      final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+      final int _cursorIndexOfLogin = CursorUtil.getColumnIndexOrThrow(_cursor, "login");
+      final int _cursorIndexOfAvatarUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "avatar_url");
+      final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
+      final int _cursorIndexOfLocation = CursorUtil.getColumnIndexOrThrow(_cursor, "location");
+      final int _cursorIndexOfCompany = CursorUtil.getColumnIndexOrThrow(_cursor, "company");
+      final int _cursorIndexOfPublicRepos = CursorUtil.getColumnIndexOrThrow(_cursor, "public_repos");
+      final int _cursorIndexOfFollowers = CursorUtil.getColumnIndexOrThrow(_cursor, "followers");
+      final int _cursorIndexOfFollowing = CursorUtil.getColumnIndexOrThrow(_cursor, "following");
+      final int _cursorIndexOfIsFavorite = CursorUtil.getColumnIndexOrThrow(_cursor, "isFavorite");
+      final User _result;
+      if(_cursor.moveToFirst()) {
+        final int _tmpId;
+        _tmpId = _cursor.getInt(_cursorIndexOfId);
+        final String _tmpLogin;
+        if (_cursor.isNull(_cursorIndexOfLogin)) {
+          _tmpLogin = null;
+        } else {
+          _tmpLogin = _cursor.getString(_cursorIndexOfLogin);
+        }
+        final String _tmpAvatarUrl;
+        if (_cursor.isNull(_cursorIndexOfAvatarUrl)) {
+          _tmpAvatarUrl = null;
+        } else {
+          _tmpAvatarUrl = _cursor.getString(_cursorIndexOfAvatarUrl);
+        }
+        final String _tmpName;
+        if (_cursor.isNull(_cursorIndexOfName)) {
+          _tmpName = null;
+        } else {
+          _tmpName = _cursor.getString(_cursorIndexOfName);
+        }
+        final String _tmpLocation;
+        if (_cursor.isNull(_cursorIndexOfLocation)) {
+          _tmpLocation = null;
+        } else {
+          _tmpLocation = _cursor.getString(_cursorIndexOfLocation);
+        }
+        final String _tmpCompany;
+        if (_cursor.isNull(_cursorIndexOfCompany)) {
+          _tmpCompany = null;
+        } else {
+          _tmpCompany = _cursor.getString(_cursorIndexOfCompany);
+        }
+        final int _tmpPublic_repos;
+        _tmpPublic_repos = _cursor.getInt(_cursorIndexOfPublicRepos);
+        final int _tmpFollowers;
+        _tmpFollowers = _cursor.getInt(_cursorIndexOfFollowers);
+        final int _tmpFollowing;
+        _tmpFollowing = _cursor.getInt(_cursorIndexOfFollowing);
+        final boolean _tmpIsFavorite;
+        final int _tmp;
+        _tmp = _cursor.getInt(_cursorIndexOfIsFavorite);
+        _tmpIsFavorite = _tmp != 0;
+        _result = new User(_tmpId,_tmpLogin,_tmpAvatarUrl,_tmpName,_tmpLocation,_tmpCompany,_tmpPublic_repos,_tmpFollowers,_tmpFollowing,_tmpIsFavorite);
+      } else {
+        _result = null;
+      }
+      return _result;
     } finally {
-      __db.endTransaction();
+      _cursor.close();
+      _statement.release();
     }
   }
 
@@ -194,6 +283,7 @@ public final class FavoriteDao_Impl implements FavoriteDao {
           final int _cursorIndexOfPublicRepos = CursorUtil.getColumnIndexOrThrow(_cursor, "public_repos");
           final int _cursorIndexOfFollowers = CursorUtil.getColumnIndexOrThrow(_cursor, "followers");
           final int _cursorIndexOfFollowing = CursorUtil.getColumnIndexOrThrow(_cursor, "following");
+          final int _cursorIndexOfIsFavorite = CursorUtil.getColumnIndexOrThrow(_cursor, "isFavorite");
           final List<User> _result = new ArrayList<User>(_cursor.getCount());
           while(_cursor.moveToNext()) {
             final User _item;
@@ -235,7 +325,11 @@ public final class FavoriteDao_Impl implements FavoriteDao {
             _tmpFollowers = _cursor.getInt(_cursorIndexOfFollowers);
             final int _tmpFollowing;
             _tmpFollowing = _cursor.getInt(_cursorIndexOfFollowing);
-            _item = new User(_tmpId,_tmpLogin,_tmpAvatarUrl,_tmpName,_tmpLocation,_tmpCompany,_tmpPublic_repos,_tmpFollowers,_tmpFollowing);
+            final boolean _tmpIsFavorite;
+            final int _tmp;
+            _tmp = _cursor.getInt(_cursorIndexOfIsFavorite);
+            _tmpIsFavorite = _tmp != 0;
+            _item = new User(_tmpId,_tmpLogin,_tmpAvatarUrl,_tmpName,_tmpLocation,_tmpCompany,_tmpPublic_repos,_tmpFollowers,_tmpFollowing,_tmpIsFavorite);
             _result.add(_item);
           }
           return _result;
@@ -273,6 +367,7 @@ public final class FavoriteDao_Impl implements FavoriteDao {
       final int _cursorIndexOfPublicRepos = CursorUtil.getColumnIndexOrThrow(_cursor, "public_repos");
       final int _cursorIndexOfFollowers = CursorUtil.getColumnIndexOrThrow(_cursor, "followers");
       final int _cursorIndexOfFollowing = CursorUtil.getColumnIndexOrThrow(_cursor, "following");
+      final int _cursorIndexOfIsFavorite = CursorUtil.getColumnIndexOrThrow(_cursor, "isFavorite");
       final User _result;
       if(_cursor.moveToFirst()) {
         final int _tmpId;
@@ -313,7 +408,11 @@ public final class FavoriteDao_Impl implements FavoriteDao {
         _tmpFollowers = _cursor.getInt(_cursorIndexOfFollowers);
         final int _tmpFollowing;
         _tmpFollowing = _cursor.getInt(_cursorIndexOfFollowing);
-        _result = new User(_tmpId,_tmpLogin,_tmpAvatarUrl,_tmpName,_tmpLocation,_tmpCompany,_tmpPublic_repos,_tmpFollowers,_tmpFollowing);
+        final boolean _tmpIsFavorite;
+        final int _tmp;
+        _tmp = _cursor.getInt(_cursorIndexOfIsFavorite);
+        _tmpIsFavorite = _tmp != 0;
+        _result = new User(_tmpId,_tmpLogin,_tmpAvatarUrl,_tmpName,_tmpLocation,_tmpCompany,_tmpPublic_repos,_tmpFollowers,_tmpFollowing,_tmpIsFavorite);
       } else {
         _result = null;
       }

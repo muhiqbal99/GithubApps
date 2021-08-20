@@ -2,7 +2,6 @@ package com.example.submission2bfaa.model
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
-import androidx.room.Dao
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
@@ -11,6 +10,7 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "tb_user_favorite")
 @Parcelize
 data class User(
+
     @PrimaryKey(autoGenerate = false)
     val id: Int,
 
@@ -39,4 +39,6 @@ data class User(
     @ColumnInfo(name = "following")
     val following: Int,
 
+    @ColumnInfo(name = "isFavorite")
+    var isFavorite: Boolean = false
 ) : Parcelable
