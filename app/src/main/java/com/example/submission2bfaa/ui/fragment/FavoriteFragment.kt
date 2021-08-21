@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.submission2bfaa.databinding.FavoriteFragmentBinding
@@ -38,11 +39,11 @@ import com.example.submission2bfaa.ui.adapter.UserAdapter
 //                startActivity(intent)
 //            }
 //
-////            favoriteViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
-////                FavoriteViewModel::class.java
-////            )
+//            favoriteViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+//                FavoriteViewModel::class.java
+//            )
 //
-//            favoriteViewModel.getFavorite.observe(viewLifecycleOwner, { dataUser ->
+//            favoriteViewModel.getFavorite().observe(viewLifecycleOwner, Observer { da ->
 //                userAdapter.setData(dataUser as ArrayList<User>)
 //                binding.errlayout.root.visibility =
 //                    if (dataUser.isNotEmpty()) View.GONE else View.VISIBLE

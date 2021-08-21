@@ -2,7 +2,6 @@ package com.example.submission2bfaa.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -28,19 +27,23 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
         val detailUser = intent.getParcelableExtra<User>(EXTRA_DATA)
 
-//        binding.fab.setOnClickListener { addOrRemoveFavorite() }
         showUser(detailUser)
     }
 
     private fun showUser(detailUser: User?) {
 
-//        val database = FavoriteDatabase.invoke(this)
-//        val repository = FavoriteRepositories(database)
-//        val factory = ViewModelFactory(repository)
-
         viewModel = ViewModelProvider(
             this
         ).get(DetailViewModel::class.java)
+
+        viewModel.getFavorite().observe(this, {
+            val isFavorites = it.isFavorite
+            if (!isFavorites) {
+                binding.fab.setImageResource(R.drawable.ic_unfavorite)
+            } else {
+                binding.fab.setImageResource(R.drawable.ic_favorite)
+            }
+        })
 
         viewModel.setUserDetail(detailUser!!.login)
 
@@ -63,15 +66,13 @@ class DetailActivity : AppCompatActivity() {
                         .into(ivAvatar)
                 }
             }
+
+            val favorite = it.copy()
+            binding.fab.setOnClickListener {
+                viewModel.setFavorite(favorite, true)
+            }
         })
 
-        var statusFavorite = detailUser.isFavorite
-        setStatusFavorite(statusFavorite)
-        binding.fab.setOnClickListener {
-            statusFavorite = !statusFavorite
-            viewModel.setFavorite(detailUser, statusFavorite)
-            setStatusFavorite(statusFavorite)
-        }
 
         val bundle = Bundle()
         bundle.putString(EXTRA_USERNAME, detailUser.login)
@@ -83,24 +84,6 @@ class DetailActivity : AppCompatActivity() {
         }
 
         setActionBarTitle(detailUser.login)
-    }
-
-    private fun setStatusFavorite(statusFavorite: Boolean) {
-        if (statusFavorite) {
-            binding.fab.setImageDrawable(
-                ContextCompat.getDrawable(
-                    this,
-                    R.drawable.ic_favorite
-                )
-            )
-        } else {
-            binding.fab.setImageDrawable(
-                ContextCompat.getDrawable(
-                    this,
-                    R.drawable.ic_favorite_red
-                )
-            )
-        }
     }
 
     private fun setActionBarTitle(username: String?) {

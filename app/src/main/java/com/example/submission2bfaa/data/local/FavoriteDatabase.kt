@@ -25,8 +25,10 @@ abstract class FavoriteDatabase : RoomDatabase() {
             }
 
         private fun createDatabase(context: Context) =
-            Room.databaseBuilder(context.applicationContext,
-                FavoriteDatabase::class.java, "tb_user_favorite.db").build()
+            Room.databaseBuilder(
+                context.applicationContext,
+                FavoriteDatabase::class.java, "tb_users_favorite.db"
+            ).build()
     }
 
 }

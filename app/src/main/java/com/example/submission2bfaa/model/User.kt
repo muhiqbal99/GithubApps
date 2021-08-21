@@ -10,7 +10,6 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "tb_user_favorite")
 @Parcelize
 data class User(
-
     @PrimaryKey(autoGenerate = false)
     val id: Int,
 

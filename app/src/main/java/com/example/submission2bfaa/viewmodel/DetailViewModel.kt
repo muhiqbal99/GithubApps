@@ -11,7 +11,6 @@ import com.example.submission2bfaa.data.remote.RetrofitInstance
 import com.example.submission2bfaa.model.User
 import com.example.submission2bfaa.repository.FavoriteRepositories
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 class DetailViewModel(application: Application) : AndroidViewModel(application) {
@@ -23,21 +22,22 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
         favoriteRepositories = FavoriteRepositories(favoriteDao)
     }
 
-    private val detail = MutableLiveData<User>()
-
+    private val user = MutableLiveData<User>()
 
     fun setUserDetail(username: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val response = RetrofitInstance.apiClient.getUserDetail(username)
-            detail.postValue(response)
+            user.postValue(response)
         }
     }
 
     fun getUserDetail(): LiveData<User> {
-        return detail
+        return user
     }
 
-     fun setFavorite(user: User, newStatus: Boolean) = viewModelScope.launch {
+    fun getFavorite(): LiveData<User> = favoriteDao.getFavorite()
+
+    fun setFavorite(user: User, newStatus: Boolean) = viewModelScope.launch {
         favoriteRepositories.setFavorite(user, newStatus)
     }
 }
