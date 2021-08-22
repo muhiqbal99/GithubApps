@@ -14,7 +14,7 @@ data class User(
     val id: Int,
 
     @ColumnInfo(name = "login")
-    val login: String,
+    val login: String?,
 
     @ColumnInfo(name = "avatar_url")
     @SerializedName("avatar_url")
@@ -39,5 +39,5 @@ data class User(
     val following: Int,
 
     @ColumnInfo(name = "isFavorite")
-    var isFavorite: Boolean
+    var isFavorite: Boolean = false
 ) : Parcelable

@@ -10,7 +10,9 @@ class FavoriteRepositories(private val favoriteDao: FavoriteDao) {
 //        favoriteDao.getFavoriteId(username)
 //    }
 
-    fun getFavorite(username: String): LiveData<User> = favoriteDao.getFavorite(username)
+    fun getFavorite(username: String): LiveData<User> {
+        return favoriteDao.getFavorite(username)
+    }
 
     suspend fun setFavorite(user: User, newState: Boolean) {
         user.isFavorite = newState

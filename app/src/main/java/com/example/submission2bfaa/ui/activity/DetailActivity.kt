@@ -38,14 +38,14 @@ class DetailActivity : AppCompatActivity() {
             this
         ).get(DetailViewModel::class.java)
 
-        viewModel.setUserDetail(username)
+        viewModel.setUserDetail(username!!)
 
-        viewModel.getFavorite(username).observe(this, {
-            val isFavorites = it.isFavorite
-            if (!isFavorites) {
-                binding.fab.setImageResource(R.drawable.ic_unfavorite)
-            } else {
+        viewModel.getFavorite(username!!).observe(this, {
+            val isFavorite = it.login
+            if (isFavorite != null) {
                 binding.fab.setImageResource(R.drawable.ic_favorite)
+            } else {
+                binding.fab.setImageResource(R.drawable.ic_unfavorite)
             }
         })
 
