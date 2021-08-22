@@ -11,6 +11,7 @@ import com.example.submission2bfaa.data.remote.RetrofitInstance
 import com.example.submission2bfaa.model.User
 import com.example.submission2bfaa.repository.FavoriteRepositories
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.DisposableHandle
 import kotlinx.coroutines.launch
 
 class DetailViewModel(application: Application) : AndroidViewModel(application) {
@@ -21,7 +22,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
     private val user = MutableLiveData<User>()
 
     fun setUserDetail(username: String) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO){
             val response = RetrofitInstance.apiClient.getUserDetail(username)
             user.postValue(response)
         }

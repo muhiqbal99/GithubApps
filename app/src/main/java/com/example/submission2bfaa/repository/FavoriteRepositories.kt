@@ -6,10 +6,6 @@ import com.example.submission2bfaa.model.User
 
 class FavoriteRepositories(private val favoriteDao: FavoriteDao) {
 
-//    fun getFavoriteId(username: String) {
-//        favoriteDao.getFavoriteId(username)
-//    }
-
     fun getFavorite(username: String): LiveData<User> {
         return favoriteDao.getFavorite(username)
     }

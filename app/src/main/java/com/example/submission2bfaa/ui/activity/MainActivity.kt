@@ -67,7 +67,6 @@ class MainActivity : AppCompatActivity() {
         adapter.onItemClick = { selectedData ->
             val intent = Intent(this@MainActivity, DetailActivity::class.java)
             intent.putExtra(DetailActivity.EXTRA_DATA, selectedData)
-            Log.d("Check Data", selectedData.toString())
             startActivity(intent)
         }
     }
