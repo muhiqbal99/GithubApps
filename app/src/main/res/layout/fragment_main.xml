@@ -22,8 +22,9 @@
             android:id="@+id/sv_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@null"
             android:focusable="true"
-            app:iconifiedByDefault="false"
+            app:iconifiedByDefault="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -47,8 +48,8 @@
         layout="@layout/activity_error"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
-        android:layout_gravity="center_vertical" />
+        android:layout_gravity="center_vertical"
+        android:visibility="visible" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_github"
@@ -58,6 +59,7 @@
         android:layout_marginBottom="@dimen/_6sdp"
         android:background="@color/abu"
         android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,6 +1,7 @@
 package com.example.submission2bfaa.ui.activity
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -14,7 +15,6 @@ import com.example.submission2bfaa.viewmodel.DetailViewModel
 class DetailActivity : AppCompatActivity() {
 
     companion object {
-        const val EXTRA_USERNAME = "extra_username"
         const val EXTRA_DATA = "extra_data"
     }
 
@@ -25,29 +25,43 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val detailUser = intent.getParcelableExtra<User>(EXTRA_DATA)
 
+        val detailUser = intent.getParcelableExtra<User>(EXTRA_DATA)
         showUser(detailUser)
+        showFavorite(detailUser)
+    }
+
+    private fun showFavorite(detailUser: User?) {
+        val username = detailUser!!.login
+        val dataUser = detailUser.copy()
+
+        viewModel.getFavoriteId(username).observe(this, {
+            val checkUser = it?.login
+            if (checkUser != null) {
+                binding.fab.setImageResource(R.drawable.ic_favorite)
+                binding.fab.setOnClickListener {
+                    viewModel.deleteFavorite(dataUser)
+                    Toast.makeText(this, R.string.delete_fav, Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                binding.fab.setImageResource(R.drawable.ic_unfavorite)
+                binding.fab.setOnClickListener {
+                    viewModel.insertFavorite(dataUser, true)
+                    Toast.makeText(this, R.string.add_fav, Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
     }
 
     private fun showUser(detailUser: User?) {
 
-        val username = detailUser!!.login
+        val username = detailUser?.login
 
         viewModel = ViewModelProvider(
             this
         ).get(DetailViewModel::class.java)
 
         viewModel.setUserDetail(username!!)
-
-        viewModel.getFavorite(username).observe(this, {
-            val isFavorite = it?.login
-            if (isFavorite != null) {
-                binding.fab.setImageResource(R.drawable.ic_favorite)
-            } else {
-                binding.fab.setImageResource(R.drawable.ic_unfavorite)
-            }
-        })
 
         viewModel.getUserDetail().observe(this, {
             if (it != null) {
@@ -68,16 +82,10 @@ class DetailActivity : AppCompatActivity() {
                         .into(ivAvatar)
                 }
             }
-
-            val favorite = it.copy()
-            binding.fab.setOnClickListener {
-                viewModel.setFavorite(favorite, true)
-            }
         })
 
-
         val bundle = Bundle()
-        bundle.putString(EXTRA_USERNAME, username)
+        bundle.putString(EXTRA_DATA, username)
 
         val sectionPageAdapter = SectionPageAdapter(this, supportFragmentManager, bundle)
         binding.apply {

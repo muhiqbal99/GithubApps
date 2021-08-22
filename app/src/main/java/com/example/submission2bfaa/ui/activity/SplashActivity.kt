@@ -7,7 +7,7 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.submission2bfaa.databinding.ActivitySpashBinding
 
-class SpashActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
 
     private lateinit var splashBinding: ActivitySpashBinding
 
@@ -17,7 +17,7 @@ class SpashActivity : AppCompatActivity() {
         setContentView(splashBinding.root)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }, 3000)

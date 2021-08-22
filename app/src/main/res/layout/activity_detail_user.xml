@@ -131,14 +131,18 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
-        android:background="?selectableItemBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="@dimen/_6sdp"
+        android:layout_marginBottom="@dimen/_6sdp"
+        android:background="?selectableItemBackground"
+        android:backgroundTint="@color/blue"
         android:contentDescription="@string/desc_btn_fav"
-        app:layout_constraintBottom_toTopOf="@+id/tab_layout"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_favorite" />
+        app:srcCompat="@drawable/ic_favorite"
+        app:tint="@color/red" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"

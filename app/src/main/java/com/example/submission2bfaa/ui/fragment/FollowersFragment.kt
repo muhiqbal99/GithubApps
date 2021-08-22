@@ -24,7 +24,7 @@ class FollowersFragment : Fragment(R.layout.fragment_follow) {
         super.onViewCreated(view, savedInstanceState)
 
         val args = arguments
-        username = args?.getString(DetailActivity.EXTRA_USERNAME).toString()
+        username = args?.getString(DetailActivity.EXTRA_DATA).toString()
         _binding = FragmentFollowBinding.bind(view)
 
         adapter = UserAdapter()

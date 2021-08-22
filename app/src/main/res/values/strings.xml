@@ -22,4 +22,12 @@
 
     <string name="change_language_settings">Change Language Settings</string>
     <string name="desc_btn_fav">Button Favorite User</string>
+
+    <string name="add_fav">successfully added user</string>
+    <string name="update_fav">successfully update user</string>
+    <string name="delete_fav">successfully delete user</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_setting">Setting</string>
 </resources>

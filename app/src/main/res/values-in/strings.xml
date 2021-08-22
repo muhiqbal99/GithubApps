@@ -23,4 +23,12 @@
 
     <string name="change_language_settings">Ubah Pengaturan Bahasa</string>
     <string name="desc_btn_fav">Tombol Favorit User</string>
+
+    <string name="add_fav">berhasil menambahkan pengguna</string>
+    <string name="update_fav">berhasil memperbarui pengguna</string>
+    <string name="delete_fav">berhasil menghapus pengguna</string>
+
+    <string name="title_home">Beranda</string>
+    <string name="title_favorite">Favorit</string>
+    <string name="title_setting">Pengaturan</string>
 </resources>
