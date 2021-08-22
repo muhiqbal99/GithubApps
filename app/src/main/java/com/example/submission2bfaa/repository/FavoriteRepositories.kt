@@ -6,7 +6,11 @@ import com.example.submission2bfaa.model.User
 
 class FavoriteRepositories(private val favoriteDao: FavoriteDao) {
 
-    fun getFavorite(): LiveData<User> = favoriteDao.getFavorite()
+//    fun getFavoriteId(username: String) {
+//        favoriteDao.getFavoriteId(username)
+//    }
+
+    fun getFavorite(username: String): LiveData<User> = favoriteDao.getFavorite(username)
 
     suspend fun setFavorite(user: User, newState: Boolean) {
         user.isFavorite = newState

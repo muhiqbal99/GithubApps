@@ -39,5 +39,5 @@ data class User(
     val following: Int,
 
     @ColumnInfo(name = "isFavorite")
-    var isFavorite: Boolean = false
+    var isFavorite: Boolean
 ) : Parcelable

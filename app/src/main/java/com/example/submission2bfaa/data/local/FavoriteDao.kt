@@ -10,11 +10,11 @@ interface FavoriteDao {
     //    @Query("SELECT * from tb_user_favorite WHERE login = :username")
 //    fun getUserDetail(username: String): User?
 ////
-    @Query("SELECT * FROM tb_user_favorite WHERE isFavorite = 1")
-    fun getFavorite(): LiveData<User>
-//
-//    @Query("SELECT * FROM tb_user_favorite where login = :username")
-//    fun getFavorite(username: String): User?
+    @Query("SELECT * FROM tb_user_favorite")
+    fun getUser(): LiveData<User>
+
+    @Query("SELECT * FROM tb_user_favorite WHERE isFavorite = 1 AND login = :username")
+     fun getFavorite(username: String): LiveData<User>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFavorite(user: User)

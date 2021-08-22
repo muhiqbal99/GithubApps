@@ -32,11 +32,15 @@ class DetailActivity : AppCompatActivity() {
 
     private fun showUser(detailUser: User?) {
 
+        val username = detailUser!!.login
+
         viewModel = ViewModelProvider(
             this
         ).get(DetailViewModel::class.java)
 
-        viewModel.getFavorite().observe(this, {
+        viewModel.setUserDetail(username)
+
+        viewModel.getFavorite(username).observe(this, {
             val isFavorites = it.isFavorite
             if (!isFavorites) {
                 binding.fab.setImageResource(R.drawable.ic_unfavorite)
@@ -44,8 +48,6 @@ class DetailActivity : AppCompatActivity() {
                 binding.fab.setImageResource(R.drawable.ic_favorite)
             }
         })
-
-        viewModel.setUserDetail(detailUser!!.login)
 
         viewModel.getUserDetail().observe(this, {
             if (it != null) {
@@ -75,7 +77,7 @@ class DetailActivity : AppCompatActivity() {
 
 
         val bundle = Bundle()
-        bundle.putString(EXTRA_USERNAME, detailUser.login)
+        bundle.putString(EXTRA_USERNAME, username)
 
         val sectionPageAdapter = SectionPageAdapter(this, supportFragmentManager, bundle)
         binding.apply {
@@ -83,7 +85,7 @@ class DetailActivity : AppCompatActivity() {
             tabLayout.setupWithViewPager(viewPage)
         }
 
-        setActionBarTitle(detailUser.login)
+        setActionBarTitle(username)
     }
 
     private fun setActionBarTitle(username: String?) {
