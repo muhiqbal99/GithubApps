@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.submission2bfaa.ui.fragment.MainFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_main" />
+        android:name="com.example.submission3.ui.fragment.MainFragment"
+        android:label="@string/title_home" />
 
     <fragment
         android:id="@+id/navigation_favorite"
-        android:name="com.example.submission2bfaa.ui.fragment.FavoriteFragment"
-        android:label="@string/title_favorite"
-        tools:layout="@layout/favorite_fragment" />
+        android:name="com.example.submission3.ui.fragment.FavoriteFragment"
+        android:label="@string/title_favorite" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_setting"-->
-<!--        android:name="com.example.submission2bfaa.ui.notifications.NotificationsFragment"-->
-<!--        android:label="@string/title_setting"-->
-<!--        tools:layout="@layout/fragment_notifications" />-->
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.example.submission3.ui.fragment.SettingsFragment"
+        android:label="@string/title_settings" />
 </navigation>

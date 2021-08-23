@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.submission2bfaa">
+    package="com.example.submission3">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Submission"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.activity.SplashActivity"
+            android:name="com.example.submission3.ui.activity.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.Submission.NoActionBar">
             <intent-filter>
@@ -22,10 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.HomeActivity" />
+        <activity android:name="com.example.submission3.ui.activity.HomeActivity" />
         <activity
-            android:name=".ui.activity.DetailActivity"
-            android:parentActivityName=".ui.fragment.MainFragment" />
+            android:name="com.example.submission3.ui.activity.DetailActivity"
+            android:parentActivityName="com.example.submission3.ui.fragment.MainFragment" />
     </application>
 
 </manifest>

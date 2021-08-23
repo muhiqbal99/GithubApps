@@ -4,6 +4,7 @@
     <string name="username">Username</string>
     <string name="input_username">Input Username</string>
     <string name="user_not_found">Username not found !</string>
+    <string name="addfavorite">Add your favorite user</string>
 
     <string name="lbl_repo">Repositories</string>
     <string name="lbl_followers">Followers</string>
@@ -20,6 +21,7 @@
     <string name="desc_icon_location">Icon Location</string>
     <string name="desc_icon_company">Icon Company</string>
 
+    <string name="title_language_settings">Change Language</string>
     <string name="change_language_settings">Change Language Settings</string>
     <string name="desc_btn_fav">Button Favorite User</string>
 
@@ -29,5 +31,6 @@
 
     <string name="title_home">Home</string>
     <string name="title_favorite">Favorite</string>
-    <string name="title_setting">Setting</string>
+    <string name="title_settings">Settings</string>
+
 </resources>
