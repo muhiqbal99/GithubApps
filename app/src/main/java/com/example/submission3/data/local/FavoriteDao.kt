@@ -1,5 +1,6 @@
 package com.example.submission3.data.local
 
+import android.database.Cursor
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.submission3.model.User
@@ -18,4 +19,7 @@ interface FavoriteDao {
 
     @Delete
     fun deleteFavorite(user: User)
+
+    @Query("SELECT * from tb_user_favorite ORDER BY login ASC")
+    fun getContent(): Cursor
 }

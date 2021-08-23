@@ -5,7 +5,7 @@
     <string name="username">Nama Pengguna</string>
     <string name="input_username">Masukkan Nama Pengguna</string>
     <string name="user_not_found">Pengguna tidak ditemukan !</string>
-    <string name="addfavorite">Tambahkan pengguna favorit anda</string>
+    <string name="add_favorite">Tambahkan pengguna favorit anda</string>
 
     <string name="lbl_repo">Repositories</string>
     <string name="lbl_followers">Pengikut</string>
@@ -33,4 +33,10 @@
     <string name="title_home">Beranda</string>
     <string name="title_favorite">Favorit</string>
     <string name="title_settings">Pengaturan</string>
+
+    <string name="reminder">Pengingat Harian</string>
+    <string name="title_reminder">Pengingat pengguna</string>
+    <string name="message_reminder">Lihat pengguna favorit anda</string>
+    <string name="reminder_on">Pengingat Harian Nyala</string>
+    <string name="reminder_off">Pengingat Harian Mati</string>
 </resources>

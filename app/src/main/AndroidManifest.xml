@@ -3,6 +3,8 @@
     package="com.example.submission3">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -18,14 +20,13 @@
             android:theme="@style/Theme.Submission.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="com.example.submission3.ui.activity.HomeActivity" />
         <activity
             android:name="com.example.submission3.ui.activity.DetailActivity"
-            android:parentActivityName="com.example.submission3.ui.fragment.MainFragment" />
+            android:parentActivityName="com.example.submission3.ui.activity.HomeActivity" />
     </application>
 
 </manifest>

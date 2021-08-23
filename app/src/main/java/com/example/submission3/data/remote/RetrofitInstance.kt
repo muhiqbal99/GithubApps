@@ -26,7 +26,6 @@ object RetrofitInstance {
 
     private val retrofitBuilder: Retrofit.Builder = Retrofit.Builder()
         .baseUrl(BASE_URL)
-        .client(client)
         .addConverterFactory(GsonConverterFactory.create())
 
     val apiClient: UserApi by lazy {

@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Submission 2 BFAA"
 include ':app'
+include ':consumerapp'
