@@ -6,12 +6,12 @@ import com.example.consumerapp.datasource.UserDataSource
 import com.example.consumerapp.repository.FavoriteRepositories
 
 class UserViewModel(application: Application) : AndroidViewModel(application) {
-    private val favoriterepository: FavoriteRepositories
+    private val repository: FavoriteRepositories
 
     init {
         val source = UserDataSource(application.contentResolver)
-        favoriterepository = FavoriteRepositories(source)
+        repository = FavoriteRepositories(source)
     }
 
-    var userLists = favoriterepository.getUserList()
+    var userLists = repository.getUserList()
 }

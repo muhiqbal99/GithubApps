@@ -17,7 +17,6 @@ class AlarmUser : BroadcastReceiver() {
 
     companion object {
         private const val ID_REPEATING = 101
-        private const val TIME_FORMAT = "HH:mm"
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -26,7 +25,7 @@ class AlarmUser : BroadcastReceiver() {
 
     private fun showNotification(context: Context?) {
         val channelId = "reminder_channel"
-        val channelName = "reminder_github_user"
+        val channelName = "reminder_github"
 
         val title = context?.resources?.getString(R.string.title_reminder)
         val message = context?.resources?.getString(R.string.message_reminder)

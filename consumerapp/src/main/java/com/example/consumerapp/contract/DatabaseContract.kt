@@ -19,6 +19,7 @@ object DatabaseContract {
             const val PUBLIC_REPOS = "public_repos"
             const val FOLLOWERS = "followers"
             const val FOLLOWING = "following"
+            const val ISFAVORIT = "isfavorit"
 
             val CONTENT_URI: Uri = Uri.Builder().scheme(SCHEME)
                 .authority(AUTHORITY)

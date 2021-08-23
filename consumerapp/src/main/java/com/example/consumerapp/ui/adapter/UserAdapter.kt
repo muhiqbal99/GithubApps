@@ -15,7 +15,7 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     private val mData = ArrayList<User>()
     var onItemClick: ((User) -> Unit)? = null
 
-    fun setData(items: ArrayList<User>) {
+    fun setData(items: List<User>) {
         mData.clear()
         mData.addAll(items)
         notifyDataSetChanged()

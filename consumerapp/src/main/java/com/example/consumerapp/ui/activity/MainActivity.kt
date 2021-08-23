@@ -5,7 +5,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.consumerapp.databinding.ActivityMainBinding
-import com.example.consumerapp.model.User
 import com.example.consumerapp.ui.adapter.UserAdapter
 import com.example.consumerapp.viewmodel.UserViewModel
 
@@ -21,6 +20,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         usersAdapter = UserAdapter()
+
+        binding.rvGithub.apply {
+            adapter = usersAdapter
+        }
+
         listUser()
     }
 
@@ -29,9 +33,9 @@ class MainActivity : AppCompatActivity() {
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         userViewModel.userLists.observe(this, { users ->
-            if (!users.isNullOrEmpty()) {
+            if (users.size > 0) {
+                usersAdapter.setData(users)
                 showLoading(false)
-                usersAdapter.setData(users as ArrayList<User>)
             } else {
                 showLoading(true)
             }
@@ -41,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     private fun showLoading(state: Boolean) {
         if (state) {
             binding.progressBar.visibility = View.VISIBLE
+//            binding.emptyLayout.activityError.visibility = View.GONE
         } else {
             binding.progressBar.visibility = View.GONE
         }

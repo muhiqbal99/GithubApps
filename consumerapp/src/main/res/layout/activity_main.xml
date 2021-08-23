@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/abu"
     tools:context=".ui.activity.MainActivity">
 
     <ProgressBar
@@ -23,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_github"
@@ -31,12 +32,11 @@
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/_6sdp"
         android:layout_marginBottom="@dimen/_6sdp"
-        android:background="@color/abu"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CardView"
+        app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/user_items" />
 
 
