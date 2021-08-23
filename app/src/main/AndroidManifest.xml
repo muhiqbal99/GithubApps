@@ -27,6 +27,11 @@
         <activity
             android:name="com.example.submission3.ui.activity.DetailActivity"
             android:parentActivityName="com.example.submission3.ui.activity.HomeActivity" />
+
+        <receiver
+            android:name=".utils.AlarmUser"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

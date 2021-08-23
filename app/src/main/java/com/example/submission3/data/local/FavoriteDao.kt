@@ -18,7 +18,7 @@ interface FavoriteDao {
     suspend fun insertFavorite(user: User)
 
     @Delete
-    fun deleteFavorite(user: User)
+    suspend fun deleteFavorite(user: User)
 
     @Query("SELECT * from tb_user_favorite ORDER BY login ASC")
     fun getContent(): Cursor

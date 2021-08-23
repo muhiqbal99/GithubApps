@@ -73,8 +73,7 @@ class AlarmUser : BroadcastReceiver() {
         }
 
         val calendar = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, 14)
-            set(Calendar.MINUTE, 25)
+            set(Calendar.HOUR_OF_DAY, 9)
         }
 
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, intent)
