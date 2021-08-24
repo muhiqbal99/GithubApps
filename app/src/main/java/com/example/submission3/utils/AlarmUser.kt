@@ -42,7 +42,7 @@ class AlarmUser : BroadcastReceiver() {
 
         val mBuilder = NotificationCompat.Builder(context, channelId)
             .setContentIntent(pendingIntent)
-            .setSmallIcon(R.drawable.logo_rounded)
+            .setSmallIcon(R.drawable.ic_favorite)
             .setContentTitle(title)
             .setContentText(message)
             .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))

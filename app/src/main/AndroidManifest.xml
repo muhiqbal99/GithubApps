@@ -30,15 +30,12 @@
         <activity
             android:name="com.example.submission3.ui.activity.DetailActivity"
             android:parentActivityName="com.example.submission3.ui.activity.HomeActivity" />
-
         <provider
-            android:name=".provider.ContentProvider"
             android:authorities="com.example.submission3"
-            android:enabled="true"
+            android:name=".provider.ContentProvider"
             android:exported="true"
             android:readPermission="com.example.submission3.READ_DATABASE"
-            android:writePermission="com.example.submission3.WRITE_DATABASE"/>
-
+            android:writePermission="com.example.submission3.WRITE_DATABASE" />
         <receiver
             android:name=".utils.AlarmUser"
             android:enabled="true"
