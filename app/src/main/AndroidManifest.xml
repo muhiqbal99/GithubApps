@@ -6,7 +6,8 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
-    <uses-permission android:name="com.example.submission3.READ_DATABASE" android:protectionLevel="normal"/>
+    <permission android:name="com.example.submission3.READ_DATABASE" android:protectionLevel="normal" />
+    <permission android:name="com.example.submission3.WRITE_DATABASE" android:protectionLevel="normal" />
 
     <application
         android:allowBackup="true"
@@ -31,11 +32,12 @@
             android:parentActivityName="com.example.submission3.ui.activity.HomeActivity" />
 
         <provider
-            android:authorities="com.example.submission3"
             android:name=".provider.ContentProvider"
+            android:authorities="com.example.submission3"
             android:enabled="true"
             android:exported="true"
-            android:readPermission="com.example.submission3.READ_DATABASE"/>
+            android:readPermission="com.example.submission3.READ_DATABASE"
+            android:writePermission="com.example.submission3.WRITE_DATABASE"/>
 
         <receiver
             android:name=".utils.AlarmUser"
