@@ -10,12 +10,12 @@ import com.example.consumerapp.R
 import com.example.consumerapp.databinding.UserItemsBinding
 import com.example.consumerapp.model.User
 
-class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     private val mData = ArrayList<User>()
     var onItemClick: ((User) -> Unit)? = null
 
-    fun setData(items: List<User>) {
+    fun setData(items: ArrayList<User>) {
         mData.clear()
         mData.addAll(items)
         notifyDataSetChanged()
