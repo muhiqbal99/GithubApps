@@ -12,7 +12,7 @@ import com.example.consumerapp.model.User
 
 class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
-    private val mData = ArrayList<User>()
+    var mData = ArrayList<User>()
     var onItemClick: ((User) -> Unit)? = null
 
     fun setData(items: ArrayList<User>) {

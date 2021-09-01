@@ -8,10 +8,10 @@ import com.example.submission3.model.User
 @Dao
 interface FavoriteDao {
 
-    @Query("SELECT * FROM tb_user_favorite WHERE isFavorite = 1")
+    @Query("SELECT * FROM tb_users WHERE isFavorite = 1")
     fun getFavorite(): LiveData<List<User>>
 
-    @Query("SELECT * FROM tb_user_favorite WHERE login = :username AND isFavorite = 1")
+    @Query("SELECT * FROM tb_users WHERE login = :username AND isFavorite = 1")
     fun getFavoriteId(username: String): LiveData<User>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -20,6 +20,6 @@ interface FavoriteDao {
     @Delete
     fun deleteFavorite(user: User)
 
-    @Query("SELECT * from tb_user_favorite ORDER BY login ASC")
+    @Query("SELECT * from tb_users ORDER BY login ASC")
     fun getContent(): Cursor
 }

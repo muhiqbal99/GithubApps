@@ -15,7 +15,7 @@ class ContentProvider : ContentProvider() {
 
     companion object {
         private const val AUTHORITY = "com.example.submission3"
-        private const val TABLE_NAME = "tb_user_favorite"
+        private const val TABLE_NAME = "tb_users"
         private const val ID_FAVORITE_DATA = 1
         private val uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
 

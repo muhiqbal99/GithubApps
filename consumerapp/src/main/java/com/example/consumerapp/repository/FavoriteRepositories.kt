@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 
 class FavoriteRepositories(private val source: UserDataSource) {
 
-    fun getUserList():LiveData<List<User>> = liveData(Dispatchers.IO){
+    fun getUserList(): LiveData<List<User>> = liveData(Dispatchers.IO) {
         emit(source.getUsers())
     }
 }

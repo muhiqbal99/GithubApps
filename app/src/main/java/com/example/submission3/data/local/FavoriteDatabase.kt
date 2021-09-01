@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.submission3.model.User
 
-@Database(entities = [User::class], version = 2, exportSchema = false)
+@Database(entities = [User::class], version = 1, exportSchema = false)
 abstract class FavoriteDatabase : RoomDatabase() {
 
     abstract fun favoriteDao(): FavoriteDao
@@ -27,7 +27,7 @@ abstract class FavoriteDatabase : RoomDatabase() {
         private fun createDatabase(context: Context) =
             Room.databaseBuilder(
                 context.applicationContext,
-                FavoriteDatabase::class.java, "tb_users_favorite.db"
+                FavoriteDatabase::class.java, "tb_users.db"
             ).build()
     }
 

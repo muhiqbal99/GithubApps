@@ -9,13 +9,13 @@ object DatabaseContract {
 
     class UserColumns : BaseColumns {
         companion object {
-            private const val TABLE_NAME = "tb_users_favorite"
+            private const val TABLE_NAME = "tb_users"
             const val ID = "id"
             const val LOGIN = "login"
             const val AVATAR_URL = "avatar_url"
             const val NAME = "name"
             const val LOCATION = "location"
-            const val TYPE = "type"
+            const val COMPANY = "company"
             const val PUBLIC_REPOS = "public_repos"
             const val FOLLOWERS = "followers"
             const val FOLLOWING = "following"
