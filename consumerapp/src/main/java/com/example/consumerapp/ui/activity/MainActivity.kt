@@ -18,17 +18,19 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var adapter: UserAdapter
+    private lateinit var userAdapter: UserAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = UserAdapter()
+        userAdapter = UserAdapter()
 
-        binding.rvGithub.setHasFixedSize(true)
-        binding.rvGithub.adapter = adapter
+        binding.rvGithub.apply {
+            setHasFixedSize(true)
+            adapter = userAdapter
+        }
 
         val handlerThread = HandlerThread("DataObserver")
         handlerThread.start()
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         contentResolver.registerContentObserver(CONTENT_URI, true, myObserver)
 
         loadUser()
+
     }
 
     private fun loadUser() {
@@ -55,21 +58,27 @@ class MainActivity : AppCompatActivity() {
             val users = deferredUser.await()
             binding.progressBar.visibility = View.INVISIBLE
             if (users.size > 0) {
-                adapter.setData(users)
-                showLoading(false)
+                userAdapter.mData = users
+                showLoading("show")
             } else {
-                showLoading(true)
+                showLoading("error")
             }
         }
     }
 
-    private fun showLoading(state: Boolean) {
-        if (state) {
-            binding.progressBar.visibility = View.GONE
-            binding.emptyLayout.activityError.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.GONE
+    private fun showLoading(state: String) {
+        when (state) {
+            "loading" -> {
+                binding.progressBar.visibility = View.GONE
+            }
+            "error" -> {
+                binding.progressBar.visibility = View.GONE
+                binding.emptyLayout.activityError.visibility = View.VISIBLE
+            }
+            "show" -> {
+                binding.progressBar.visibility = View.GONE
+                binding.rvGithub.visibility = View.VISIBLE
+            }
         }
     }
-
 }

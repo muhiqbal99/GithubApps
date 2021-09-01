@@ -13,13 +13,11 @@ import com.example.consumerapp.model.User
 class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     var mData = ArrayList<User>()
-    var onItemClick: ((User) -> Unit)? = null
-
-    fun setData(items: ArrayList<User>) {
-        mData.clear()
-        mData.addAll(items)
-        notifyDataSetChanged()
-    }
+        set(mData) {
+            this.mData.clear()
+            this.mData.addAll(mData)
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val mView = LayoutInflater.from(parent.context).inflate(R.layout.user_items, parent, false)
@@ -44,12 +42,6 @@ class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
                     )
                     .into(ivAvatar)
                 binding.tvUsername.text = userItems.login
-            }
-        }
-
-        init {
-            binding.root.setOnClickListener {
-                onItemClick?.invoke(mData[bindingAdapterPosition])
             }
         }
 
