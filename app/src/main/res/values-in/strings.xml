@@ -27,7 +27,6 @@
     <string name="desc_btn_fav">Tombol Favorit User</string>
 
     <string name="add_fav">berhasil menambahkan pengguna</string>
-    <string name="update_fav">berhasil memperbarui pengguna</string>
     <string name="delete_fav">berhasil menghapus pengguna</string>
 
     <string name="title_home">Beranda</string>

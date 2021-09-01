@@ -8,7 +8,8 @@ import androidx.preference.SwitchPreferenceCompat
 import com.example.submission3.R
 import com.example.submission3.utils.AlarmUser
 
-class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
+class SettingsFragment : PreferenceFragmentCompat(),
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     private lateinit var reminderPreference: SwitchPreferenceCompat
     private lateinit var reminderUser: AlarmUser
@@ -34,29 +35,31 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        if (key == reminder){
-            if (sharedPreferences != null){
+        if (key == reminder) {
+            if (sharedPreferences != null) {
                 reminderPreference.isChecked = sharedPreferences.getBoolean(reminder, false)
             }
         }
 
-        val state: Boolean = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(reminder, false)
+        val state: Boolean =
+            PreferenceManager.getDefaultSharedPreferences(context).getBoolean(reminder, false)
 
         setReminder(state)
     }
 
-    private fun initReminder(){
+    private fun initReminder() {
         reminder = getString(R.string.reminder_key)
-        reminderPreference = findPreference<SwitchPreferenceCompat>(reminder) as SwitchPreferenceCompat
+        reminderPreference =
+            findPreference<SwitchPreferenceCompat>(reminder) as SwitchPreferenceCompat
     }
 
-    private fun initSharedPreference(){
+    private fun initSharedPreference() {
         val sharedPreferences = preferenceManager.sharedPreferences
         reminderPreference.isChecked = sharedPreferences.getBoolean(reminder, false)
     }
 
-    private fun setReminder(state: Boolean){
-        if (state){
+    private fun setReminder(state: Boolean) {
+        if (state) {
             context?.let {
                 reminderUser.setRepeatingReminder(it)
             }

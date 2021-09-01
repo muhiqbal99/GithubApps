@@ -6,10 +6,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.submission3.R
-import com.example.submission3.ui.activity.DetailActivity
-import com.example.submission3.ui.adapter.UserAdapter
 import com.example.submission3.databinding.FragmentFollowBinding
 import com.example.submission3.model.User
+import com.example.submission3.ui.activity.DetailActivity
+import com.example.submission3.ui.adapter.UserAdapter
 import com.example.submission3.viewmodel.FollowingViewModel
 
 class FollowingFragment : Fragment(R.layout.fragment_follow) {

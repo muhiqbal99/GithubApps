@@ -75,7 +75,10 @@ class AlarmUser : BroadcastReceiver() {
             set(Calendar.HOUR_OF_DAY, 9)
         }
 
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, intent)
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,
+            calendar.timeInMillis,
+            AlarmManager.INTERVAL_DAY,
+            intent)
         Toast.makeText(context, context.getString(R.string.reminder_on), Toast.LENGTH_SHORT).show()
     }
 

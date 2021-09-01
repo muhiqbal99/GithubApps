@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.submission3.R
 import com.example.submission3.databinding.FavoriteFragmentBinding
 import com.example.submission3.model.User
 import com.example.submission3.ui.activity.DetailActivity

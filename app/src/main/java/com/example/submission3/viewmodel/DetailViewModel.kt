@@ -35,7 +35,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
         return favoriteRepositories.getFavoriteId(username)
     }
 
-    fun insertFavorite (user: User,newStatus: Boolean) {
+    fun insertFavorite(user: User, newStatus: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             favoriteRepositories.insertFavorite(user, newStatus)
         }

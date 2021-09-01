@@ -12,10 +12,6 @@
         <item name="cornerSize">@dimen/_6sdp</item>
     </style>
 
-    <style name="SearchView" parent="Widget.App.CardView">
-        <item name="cornerSize">50%</item>
-    </style>
-
     <style name="Widget.App.CardView" parent="Widget.MaterialComponents.CardView">
         <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
         <item name="cardElevation">2dp</item>

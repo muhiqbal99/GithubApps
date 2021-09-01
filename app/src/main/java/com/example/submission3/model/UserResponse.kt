@@ -9,5 +9,5 @@ data class UserResponse(
     val total_count: String,
     @SerializedName("incomplete_results")
     val incompleteResults: Boolean? = null,
-    val items: ArrayList<User>
+    val items: ArrayList<User>,
 ) : Parcelable

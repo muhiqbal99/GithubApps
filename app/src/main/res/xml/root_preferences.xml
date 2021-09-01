@@ -7,8 +7,7 @@
             android:icon="@drawable/ic_language"
             app:title="@string/title_language_settings"
             app:summary="@string/change_language_settings">
-            <intent
-                android:action="android.settings.LOCALE_SETTINGS"/>
+            <intent android:action="android.settings.LOCALE_SETTINGS" />
         </Preference>
 
         <SwitchPreferenceCompat
@@ -16,7 +15,7 @@
             app:key="@string/reminder_key"
             app:title="@string/reminder"
             app:summaryOn="@string/reminder_on"
-            app:summaryOff="@string/reminder_off"/>
+            app:summaryOff="@string/reminder_off" />
     </PreferenceCategory>
 
 </PreferenceScreen>
